@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import {formatearFecha} from '../helpers'
+import styles from '../styles/Entrada.module.css'
 
 const Entrada = ({entrada}) => {
   const { titulo, resumen, imagen, published_at, id } = entrada;
