@@ -8,7 +8,7 @@ const Entrada = ({entrada}) => {
   return (
     <article>
 
-        <Image layout='responsive' width={800} height={600} 
+        <Image priority="true" layout='responsive' width={800} height={600} 
         src={imagen.url} alt={`imagen blog ${titulo}`}/>
 
         <div className={styles.contenido}>
