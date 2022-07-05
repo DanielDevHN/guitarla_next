@@ -4,7 +4,7 @@ import styles from '../styles/Guitarra.module.css'
 
 const Guitarra = ({guitarra}) => {
 
-    const { descripcion, imagen, nombre, precio, url } = guitarra
+const { descripcion, imagen, nombre, precio, url } = guitarra
   return (
     <div className={styles.guitarra}>
         <Image  primary="true" layout='responsive' width={150} height={350}
