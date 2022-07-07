@@ -1,13 +1,39 @@
-import { useState} from "react"
+import { useState, useEffect} from "react"
 import '../styles/normalize.css'
 import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
 
-  const [carrito, setCarrrito] = useState([])
+  const initialState = []
+  const [carrito, setCarrito] = useState(initialState)
 
-  const agregarCarrito = producto => {
-    setCarrrito([...carrito, producto])
+  useEffect(() => {
+    const carritoLS = JSON.parse(localStorage.getItem('carrito'))
+    if (carritoLS) {
+      setCarrito(carritoLS)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (carrito !== initialState){
+      localStorage.setItem('carrito', JSON.stringify(carrito))
+    }
+  }, [carrito])
+
+  const agregarCarrito = (producto) => {
+    if(carrito.some((articulo) => {
+      return articulo.id === producto.id
+    } )) {
+      const carritoActualizado = carrito.map((articulo) => {
+          if(articulo.id === producto.id) {
+              articulo.cantidad = producto.cantidad
+          }
+          return articulo
+      })
+      setCarrito(carritoActualizado)
+    } else {
+      setCarrito([...carrito, producto])
+    }
   }
 
   return <Component {...pageProps} 
