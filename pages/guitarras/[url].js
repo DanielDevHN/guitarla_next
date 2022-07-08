@@ -15,6 +15,8 @@ const Producto = ({guitarra, agregarCarrito}) => {
         if (cantidad < 1) {
             alert('Cantidad no valida')
             return
+        } else {
+            {alert('Producto agregado al carrito')}
         }
         
         //Agregar al carrito
